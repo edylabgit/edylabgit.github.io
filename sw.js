@@ -11,7 +11,13 @@ self.addEventListener("install", (event) => {
                 '/responsive.html',
                 '/promise.html',
                 '/manipulasidom.html',
-                '/sw.js'
+                '/sw.js',
+                
+                
+                '/144.png',
+                '/152.png',
+                '/256.png',
+                '/512.png',
             ]);
         }).then(() => {
             self.skipWaiting();
