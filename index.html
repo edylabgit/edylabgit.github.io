@@ -39,6 +39,7 @@
                 <a class="nav-item nav-link" id="halUtama" href="#">Home </a>
                 <a class="nav-item nav-link" id="halProduk" href="#">Produk</a>
                 <a class="nav-item nav-link" id="halAtur" href="#">Pengaturan</a>
+                <a class="nav-item nav-link" id="notifikasi" href="#">Buat Notifikasi</a>
             </div>
         </div>
     </nav>
@@ -149,12 +150,43 @@
             //install
             navigator.serviceWorker.register('/sw.js').then((reg) => {
                 console.log('serviceWorker berhasil didaftarkan');
-                document.querySelector("#sw").innerHTML = 'berhasil';
+               // document.querySelector("#sw").innerHTML = 'berhasil';
             }).catch((err) => {
                 console.log('service worker gagal didaftarkan');
-                document.querySelector("#sw").innerHTML = 'gagal';
+               // document.querySelector("#sw").innerHTML = 'gagal';
             });
         }
     </script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyD6KFzoirCct3qEA_rLHRI4PLFfGH4P2s8",
+    authDomain: "notification-c8053.firebaseapp.com",
+    projectId: "notification-c8053",
+    storageBucket: "notification-c8053.appspot.com",
+    messagingSenderId: "500101980557",
+    appId: "1:500101980557:web:141da168be7c1bbd855dc4"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+   //tambahkan untuk mendapatkan token-------------------------------------------------------------------------
+   const messaging = firebase.messaging();
+  let token;
+  messaging.getToken().then((token)=>{
+      if(token){
+          alert(token);
+      }else{
+          alert('tidak mendapatkan token');
+      }
+  }).catch((err)=>{
+      alert('gagal '+err);
+  })
+</script>
 </body>
 </html>
